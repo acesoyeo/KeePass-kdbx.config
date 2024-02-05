@@ -1,0 +1,37 @@
+If you have a PPK (PuTTY Private Key) file and you want to convert it to an OpenSSH private key format (id_rsa) on a Linux system, you can use the puttygen tool, which is part of the PuTTY suite. Follow these steps:
+
+Install PuTTY on Linux:
+
+If you don't have PuTTY tools installed on your Linux system, you can install them. On Debian/Ubuntu-based systems, you can use:
+
+bash
+$sudo apt-get update
+$sudo apt-get install putty-tools
+
+On Red Hat/Fedora-based systems, you can use:
+bash
+$sudo dnf install putty
+
+Convert PPK to id_rsa:
+
+Once PuTTY tools are installed, you can use puttygen to convert the PPK file to the OpenSSH format. Assuming your PPK file is named your_key.ppk, use the following command:
+
+bash
+$puttygen your_key.ppk -O private-openssh -o your_key_rsa
+Replace your_key.ppk with the actual name of your PPK file and your_key_rsa with the desired name for the output OpenSSH private key file.
+
+Set Correct Permissions:
+
+Ensure that the newly generated your_key_rsa file has the correct permissions. The OpenSSH private key file should have restrictive permissions for security reasons:
+
+bash
+$chmod 600 your_key_rsa
+Use the Converted Key:
+
+You can now use the converted your_key_rsa file with the standard OpenSSH tools. For example, to SSH into a machine:
+
+bash
+$ssh -i your_key_rsa user@hostname
+Replace user with your username and hostname with the target machine's IP address or domain name.
+
+That's it! You have successfully converted a PPK file to an OpenSSH private key on a Linux system using puttygen.
